@@ -1,8 +1,7 @@
-streamlit
-pandas
-numpy
-scikit-learn
+streamlit>=1.45
+pandas>=2.2
+numpy<2.3
+scikit-learn>=1.7
+joblib>=1.5
 matplotlib
-seaborn
 plotly
-joblib
