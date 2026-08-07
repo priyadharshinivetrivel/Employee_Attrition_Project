@@ -6,12 +6,21 @@ import joblib
 st.set_page_config(page_title="Employee Attrition Dashboard", layout="wide")
 
 # Load Files
-df = pd.read_csv("Palo Alto Networks (1).csv")
-import joblib
 
-model = joblib.load("model.pkl")
-scaler = joblib.load("scaler.pkl")
-feature_columns = joblib.load("feature_columns.pkl")
+
+@st.cache_data
+def load_data():
+    return pd.read_csv("Palo Alto Networks (1).csv")
+
+@st.cache_resource
+def load_resources():
+    model = joblib.load("model.pkl")
+    scaler = joblib.load("scaler.pkl")
+    feature_columns = joblib.load("feature_columns.pkl")
+    return model, scaler, feature_columns
+
+df = load_data()
+model, scaler, feature_columns = load_resources()
 
 
 
